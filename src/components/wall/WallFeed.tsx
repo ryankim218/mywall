@@ -3,7 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 import type { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 import type { Post } from "@/types/post";
-import { createPost, getLatestPosts } from "@/lib/supabase/posts";
+import {
+  createPost,
+  getLatestPosts,
+  uploadPostPhoto,
+} from "@/lib/supabase/posts";
 import { supabase } from "@/lib/supabase/client";
 import { WallComposer } from "./WallComposer";
 import { WallPost } from "./WallPost";
@@ -84,8 +88,9 @@ export function WallFeed() {
     };
   }, [loadPosts]);
 
-  async function handleSubmit(message: string) {
-    const post = await createPost(message);
+  async function handleSubmit(message: string, photo?: File) {
+    const photoUrl = photo ? await uploadPostPhoto(photo) : undefined;
+    const post = await createPost(message, photoUrl);
     setPosts((current) =>
       sortAndLimit(
         current.some((item) => item.id === post.id)

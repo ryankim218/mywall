@@ -19,7 +19,9 @@ Open `http://localhost:3000`.
 
 ## Supabase
 
-The app reads the latest 50 posts, inserts public wall messages, and subscribes to new `posts` inserts. The browser client accepts `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` and also supports `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+The app reads the latest 50 posts, inserts public wall messages, and subscribes to new `posts` inserts. Optional post photos are uploaded to the public `wall-photos` Storage bucket, and their URLs are saved in `posts.photo_url`. Run `supabase/schema.sql` to add the column, bucket, and access policies. The browser client accepts `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` and also supports `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+
+Post photo uploads accept JPEG, PNG, and WebP files up to 5 MB. The wall is public and has no authentication, so anyone can publish posts and photos.
 
 ## Scripts
 
