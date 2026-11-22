@@ -102,13 +102,13 @@ export function WallFeed() {
 
   return (
     <section aria-label="Wall">
-      <div className="border-b border-[#6d84b4] bg-[#dfe5ef] px-4 py-2">
-        <h2 className="text-sm font-bold text-[#1a3a6b]">Wall</h2>
-      </div>
       <WallComposer onSubmit={handleSubmit} />
 
       {loading ? (
-        <p className="px-4 py-8 text-center text-sm text-[#667797]" role="status">
+        <p
+          className="px-4 py-8 text-center text-sm text-[#667797]"
+          role="status"
+        >
           Loading wall posts...
         </p>
       ) : error ? (

@@ -27,8 +27,8 @@ export function WallPost({ post }: { post: Post }) {
             <Image
               src={post.photo_url}
               alt={`Photo shared by ${post.user_name}`}
-              width={800}
-              height={600}
+              width={400}
+              height={200}
               unoptimized
               className="mt-3 h-auto max-h-[480px] max-w-full object-contain"
             />
